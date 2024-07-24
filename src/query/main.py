@@ -1,5 +1,7 @@
 import spacy
-nlp = spacy.load("en_core_web_sm")
+from spacy.tokens import Token
+from query.tags import Tag
+
 
 
 class Query:
@@ -18,20 +20,29 @@ class Query:
     """
     
     def __init__(self, text):
+        self.nlp = spacy.load("en_core_web_sm")
+        self.tags = Tag().all_tags
+        Token.set_extension("is_tag", default=False, force=True)
         self.text = text
-        self.tokens = self.tokenize(text)
+        self.tokens = self.tokenize_with_pos(text)
         self.entities = self.extract_entities(text)
+        
         
     def __repr__(self):
         return f"Query({self.text})"
         
     def tokenize(self, text):
-        doc = nlp(text)
+        doc = self.nlp(text)
         return [token.text for token in doc]
     
     def tokenize_with_pos(self, text):
-        doc = nlp(text)
-        return [(token.text, token.pos_) for token in doc]
+        doc = self.nlp(text)
+        tokens = []
+        for token in doc:
+            if token.text in self.tags:
+                token._.is_tag = True
+            tokens.append((token.text, token.pos_, token._.is_tag))
+        return tokens
     
     def extract_entities(self, text):
         """ 
@@ -47,13 +58,8 @@ class Query:
         LAW: Named documents made into laws
         LANGUAGE: Any named language 
         """
-        doc = nlp(text)
+        doc = self.nlp(text)
         return [(ent.text, ent.label_) for ent in doc.ents]
 
-input_query = f"Microsoft has offices all over Europe."
-
-q = Query(input_query)
-print(q.tokens)
-print(q.entities)
 
 

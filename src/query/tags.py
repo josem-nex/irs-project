@@ -2,7 +2,7 @@ import json
 import os
 
 
-class Tags:
+class Tag:
     """
     A class to extract tags from a JSON file and store them in a list.
     """
@@ -29,7 +29,7 @@ class Tags:
         """
         if os.path.exists(self.tags_output):
             with open(self.tags_output, "r") as f:
-                return [tag.strip() for tag in f.readlines()]
+                return [tag.strip().lower() for tag in f.readlines()]
             
         if not self.json_data:
             return Exception("No JSON data found.")
@@ -47,10 +47,6 @@ class Tags:
     def save_tags(self, all_tags):
         with open(self.tags_output, "w") as f:
             for tag in all_tags:
-                f.write(tag + "\n")
+                f.write(tag.lower() + "\n")
 
 
-
-
-tags = Tags()
-print(tags.all_tags)
