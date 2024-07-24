@@ -1,6 +1,6 @@
 import spacy
 from spacy.tokens import Token
-from query.tags import Tag
+from query.utils import Utils
 
 
 
@@ -21,8 +21,10 @@ class Query:
     
     def __init__(self, text):
         self.nlp = spacy.load("en_core_web_sm")
-        self.tags = Tag().all_tags
+        self.tags = Utils().all_tags
+        self.genres = Utils().all_genres
         Token.set_extension("is_tag", default=False, force=True)
+        Token.set_extension("is_genre", default=False, force=True)
         self.text = text
         self.tokens = self.tokenize_with_pos(text)
         self.entities = self.extract_entities(text)
@@ -41,7 +43,11 @@ class Query:
         for token in doc:
             if token.text in self.tags:
                 token._.is_tag = True
-            tokens.append((token.text, token.pos_, token._.is_tag))
+                # token.pos_ = "TAG"
+            if token.text in self.genres:
+                token._.is_genre = True
+                # token.pos_ = "GENRE"
+            tokens.append((token.text, token.pos_, token._.is_tag, token._.is_genre))
         return tokens
     
     def extract_entities(self, text):
@@ -60,6 +66,3 @@ class Query:
         """
         doc = self.nlp(text)
         return [(ent.text, ent.label_) for ent in doc.ents]
-
-
-
