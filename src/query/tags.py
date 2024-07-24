@@ -35,14 +35,14 @@ class Tags:
             return Exception("No JSON data found.")
         
             
-        all_tags = []
+        all_tags = set()
         for item in self.json_data:
             tags = item.get("tags", [])
-            all_tags.extend(tags)
+            all_tags.update(tags)
             
         self.save_tags(all_tags)
         
-        return all_tags
+        return list(all_tags)
 
     def save_tags(self, all_tags):
         with open(self.tags_output, "w") as f:
