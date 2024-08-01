@@ -1,2 +1,3 @@
 Scrapy==2.11.2
 Spacy==3.7.4
+Networkx==3.3

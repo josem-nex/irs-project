@@ -25,7 +25,7 @@ def create_graph(games):
             tag_cost = calculate_tag_cost(gamei,gamej)
             total_cost = (genre_cost*0.5) + (tag_cost*0.3)
             
-            if total_cost >0:
+            if total_cost >0.4:
                 graph.add_edge(gamei["title"], gamej["title"],weight=total_cost)
     
     return graph
