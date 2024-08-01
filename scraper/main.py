@@ -18,10 +18,13 @@ class GgDealsSpider(scrapy.Spider):
 
         title_selector = response.css("a.active")
         title = title_selector.xpath("./span/text()")
+
         genres_selector = response.css("div#game-info-genres")
         genres = genres_selector.xpath(".//a//text()")
+
         tags_selector = response.css("div#game-info-tags")
         tags = tags_selector.xpath(".//a//text()")
+        
         description_selector = response.css("div.game-description.description-text")
         description = description_selector.xpath(".//p//text()")
 
