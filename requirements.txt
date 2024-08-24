@@ -1,3 +1,5 @@
 fastapi==0.111.1
 Scrapy==2.11.2
+Spacy==3.7.4
 SQLAlchemy==2.0.31
+Networkx==3.3
