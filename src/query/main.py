@@ -1,6 +1,6 @@
 import spacy
 from spacy.tokens import Token
-from query.utils import Utils
+from .utils import Utils
 
 
 
