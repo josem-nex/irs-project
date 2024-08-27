@@ -5,13 +5,15 @@ from query.utils import Utils
 # import matplotlib.pyplot as plt
 from typing import List
 from knowledge.indexing import Indexer, DataDoc
+from query.utils import query_to_dfs
 
 if __name__ == "__main__":
-    input_query = f"I want to play something action-packed but not set in a medieval theme and has ghosts"
-    q = Query(input_query)
+    # input_query = f"I want to play something action-packed but not set in a medieval theme and has ghosts"
+    # q = Query(input_query)
     # print(q.tokens)
-    
-    
+    query_tags = query_to_dfs("survival and action and not (medieval or fantasy or multiplayer)") 
+
+    print(query_tags)
     utils = Utils()
     # print(utils.json_data[0])
     # print(utils.json_data)
@@ -21,18 +23,21 @@ if __name__ == "__main__":
     data_genres: List[DataDoc] = []
     for game in utils.json_data:
         data_description.append(DataDoc(game["title"], game["description"]))
-        # ? mejor manera de hacer lo de abajo, si se hace junto se puede perder los tags compuestos
-        # ? ej: "Open World"
-        for tag in game["tags"]:
-            data_tags.append(DataDoc(game["title"], tag))
-        for genre in game["genres"]:
-            data_genres.append(DataDoc(game["title"], genre))
+        
+        genres = game.get("genres", [])
+        genres = [g.lower().replace(" ", "_") for g in genres]
+        data_genres.append(DataDoc(game["title"], " ".join(genres)))
+        
+        tags = game.get("tags", [])
+        tags = [t.lower().replace(" ", "_") for t in tags]
+        data_tags.append(DataDoc(game["title"], " ".join(tags)))
+
     
     indexer_description = Indexer(data_description)
     indexer_tags = Indexer(data_tags)
     indexer_genres = Indexer(data_genres)
     
-    # print(indexer_genres.invind.tokens)
+    print(indexer_tags.invind.matching_docs(query_tags))
 
     
     

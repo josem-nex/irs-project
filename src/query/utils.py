@@ -1,6 +1,8 @@
 import json
 import os
-
+import sympy
+import spacy
+nlp = spacy.load("en_core_web_sm")
 
 class Utils:
     """
@@ -82,3 +84,42 @@ class Utils:
                 f.write(genre.lower() + "\n")
 
 
+def tokenize(query, special_tokens=['and', 'or', 'not', '(', ')', '&', '~', '|']):
+    data = nlp(query)
+    
+    tokens = []
+    for token in data:
+        if token.text.isalpha() or token.lemma_ in special_tokens:
+            if token.lemma_ == "not":
+                tokens.append("~")
+            elif token.lemma_ == "and":
+                tokens.append("&")
+            elif token.lemma_ == "or":
+                tokens.append("|")
+            else:
+                tokens.append(token.lemma_)
+                
+    return tokens
+
+def query_to_dfs(query):
+    """
+    Transforms a boolean expression into its disjunctive normal form
+    
+    Args:
+    - query : str
+        Boolean query.
+
+    Return:
+    - instance of class Or
+    
+    """
+    # Tokenize the query
+    tokens = tokenize(query)
+    
+    # Create a string with the tokens
+    query = ' '.join(tokens)
+    
+    # Transform the query into its disjunctive normal form
+    query = sympy.to_dnf(query, True)
+    
+    return query
