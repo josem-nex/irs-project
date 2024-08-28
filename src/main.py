@@ -11,7 +11,7 @@ if __name__ == "__main__":
     # input_query = f"I want to play something action-packed but not set in a medieval theme and has ghosts"
     # q = Query(input_query)
     # print(q.tokens)
-    query_tags = query_to_dfs("survival and action and not (medieval or fantasy or multiplayer)") 
+    query_tags = query_to_dfs("Medieval and not ghosts and not survival and not shooter") 
 
     print(query_tags)
     utils = Utils()

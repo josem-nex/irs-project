@@ -119,7 +119,7 @@ class InvertedIndex:
                     matching_docs |= term_docs
             
             return matching_docs
-        else:
+        elif query_dnf.func == sympy.And:
             term_docs = None
             term = query_dnf
             # Iterate over the literals of the term
@@ -144,6 +144,17 @@ class InvertedIndex:
             if term_docs:
                 matching_docs |= term_docs
             return matching_docs
+        elif query_dnf.func == sympy.Not:
+            term = query_dnf
+            # Check if the literal is a negation
+            # Get the documents that do not match the literal
+            docs = self.tokens.get(str(term.args[0]), set())
+            term_docs = set(self._titles) - docs
+            return term_docs
+        else:
+            # Get the documents that match the literal
+            docs = self.tokens.get(str(query_dnf), set())
+            return docs
     
     def __str__(self) -> str:
         return str(self.tokens)
