@@ -19,7 +19,7 @@ class RecSystem:
         self.games_data: List[GameData] = []
         self.dictionary: corpora.Dictionary = None 
         
-        self.load()
+        self.load(is_from_file=is_from_file)
         
     
     def load(self, is_from_file: bool = False):
@@ -43,8 +43,8 @@ class RecSystem:
                     Vector=vector
                 ))
                 
-            save_json(self.games_data, self.game_storage._games_data_path)
-            self.dictionary.save(self.game_storage._dictionary_path)
+            save_json(self.games_data, self.game_storage.games_data_path)
+            self.dictionary.save(self.game_storage.dictionary_path)
             
     def add_game(self, game: Game):
         self.game_storage.add_game(game)

@@ -51,6 +51,10 @@ class GameStorage:
     def games_data_path(self) -> str:
         return self._games_data_path
     
+    @property
+    def dictionary_path(self) -> str:
+        return self._dictionary_path
+    
     def load(self):
         self._games = load_games(self._scraper_path)
                 

@@ -13,7 +13,8 @@ def tokenize(text: List[str], n_process=1) -> List[str]:
     for doc in docs:
         tokens = []
         for token in doc:
-            if (token.is_alpha or token.is_digit) and not token.is_punct:
+            # only take sustantive and adjectives and formas verbales
+            if (token.is_alpha or token.is_digit) and not token.is_punct and (token.pos_ == "NOUN" or token.pos_ == "ADJ" or token.pos_ == "VERB"):
                 if str(token.lemma_) != "game" and str(token.lemma_) != "games":
                     tokens.append(token.lemma_)
         tokenized_docs.append(tokens)
