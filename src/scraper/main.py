@@ -32,10 +32,10 @@ class GgDealsSpider(scrapy.Spider):
             description = description_selector.xpath(".//text()")
 
         yield {
-                "title": title.get(),
-                "genres": genres.getall(),
-                "tags": tags.getall(),
-                "description": " ".join(description.getall()).replace("\n", "")
+                "Title": title.get(),
+                "Genres": genres.getall(),
+                "Tags": tags.getall(),
+                "Description": " ".join(description.getall()).replace("\n", "")
             }
     
     def parse_games_page(self, response):
