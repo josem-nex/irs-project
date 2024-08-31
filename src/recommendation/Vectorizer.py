@@ -10,7 +10,7 @@ def vectorize(tokenized_docs, is_query=False, dictionary=None):
     corpus = [dictionary.doc2bow(doc) for doc in tokenized_docs]
     
     if is_query:
-        print(tokenized_docs)
+        # print(tokenized_docs)
         return dictionary, corpus
     
     # Create a TF-IDF model
