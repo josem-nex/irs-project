@@ -9,12 +9,10 @@ from sqlalchemy.orm import Session
 from .database import engine, Game, Genre, Tag
 from .logic import get_results_from_query
 from .serializers import GameSchema, TagSchema, GenreSchema
-from ..recommendation.RecSystem import RecSystem
-from ..recommendation.model import RetrievalModel
+from ..retrieval.model import RetrievalModel
 
 
 
-# rec = RecSystem(True)
 nlp = load("en_core_web_sm", disable=["ner", "parser"]) 
 rec = RetrievalModel(nlp, [])
 
