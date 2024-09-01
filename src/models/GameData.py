@@ -3,6 +3,9 @@ from typing import List
 
 @dataclass
 class GameData:
+    """
+    A class to represent a processed game data.
+    """
     Title: str
     Description: str
     Genres: List[str] = field(default_factory=list)

@@ -3,6 +3,9 @@ from typing import List
 
 @dataclass
 class GameOut:
+    """
+    A class to represent a game output.
+    """
     Title: str
     Description: str 
     Similarity: float

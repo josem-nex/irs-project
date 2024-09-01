@@ -8,6 +8,22 @@ from .transparency import TagTransparentLayer, GenreTransparentLayer
 from ..api.utils import get_game
 
 class RetrievalModel:
+    """
+    A class that represents a retrieval model.
+    
+    Attributes
+    ----------
+    nlp : spacy.lang.en.English
+        The English language model.
+    docs : List[Game]
+        The list of games.
+    genres : List[str]
+        The list of genres.
+    tags : List[str]
+        The list of tags.
+    tokenizer : Tokenizer
+        The tokenizer object.
+    """
     def __init__(self, nlp, docs) -> None:
         self.nlp = nlp
         self.tokenizer = Tokenizer(nlp)
@@ -110,5 +126,4 @@ class RetrievalModel:
         # sort by similarity
         result.sort(key=lambda x: x[1]['Total'], reverse=True)
         
-        # return the first 10
         return result

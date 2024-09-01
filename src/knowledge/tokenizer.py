@@ -2,6 +2,21 @@ import spacy
 from typing import List
 
 class Tokenizer:
+    """
+    A class to tokenize text using the spacy pipeline.
+
+    Attributes
+    ----------
+    nlp : spacy.lang.en.English
+        The English language model.
+
+    Methods
+    -------
+    tokenize(text: List[str], genres=[], tags=[], is_query=False, n_process=1) -> List[str]
+        Tokenize the text using the spacy pipeline.
+        If is_query is True, the function will also tag the tokens that are genres or tags.
+    
+    """
     def __init__(self, nlp) -> None:
         self.nlp = nlp
         spacy.tokens.Token.set_extension("is_tag", default=False, force=True)
@@ -26,13 +41,10 @@ class Tokenizer:
                             tokens.append(token)
                 tokenized_docs.append(tokens)
             return tokenized_docs
-        # return [[token.lemma_ for token in doc if (token.is_alpha or token.is_digit) and not token.is_punct and (str(token.lemma_) != "game" or str(token.lemma_) !="games")] for doc in docs]
-        # return a list of lemmatized tokens, only necessary for the recommendation system
         tokenized_docs = []
         for doc in docs:
             tokens = []
             for token in doc:
-                # only take sustantive and adjectives and formas verbales
                 if (token.is_alpha or token.is_digit) and not token.is_punct and (token.pos_ == "NOUN" or token.pos_ == "ADJ" or token.pos_ == "VERB"):
                     if str(token.lemma_) != "game" and str(token.lemma_) != "games":
                         tokens.append(token.lemma_)

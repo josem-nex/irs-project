@@ -5,3 +5,4 @@ Spacy==3.7.4
 SQLAlchemy==2.0.31
 Networkx==3.3
 Sympy==1.12
+typer==0.12.3
