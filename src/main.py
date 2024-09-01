@@ -1,10 +1,10 @@
 
 from query.main import Query
-from src.recommendation.Graph import *
+from recommendation.Graph import *
 from query.utils import Utils
 # import matplotlib.pyplot as plt
 from typing import List
-from src.knowledge.Indexing import Indexer, DataDoc
+from knowledge.Indexing import Indexer, DataDoc
 from query.utils import query_to_dfs
 
 if __name__ == "__main__":

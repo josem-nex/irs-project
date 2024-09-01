@@ -1,12 +1,12 @@
-action
-massively multiplayer
-indie
-rpg
-casual
-early access
-free to play
-racing
-sports
-adventure
-simulation
-strategy
+indie 
+free play 
+action 
+sport 
+race 
+massively multiplayer 
+casual 
+strategy 
+rpg 
+simulation 
+adventure 
+early access 

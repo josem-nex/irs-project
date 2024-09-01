@@ -123,3 +123,4 @@ def query_to_dfs(query):
     query = sympy.to_dnf(query, True)
     
     return query
+

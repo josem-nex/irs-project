@@ -1,263 +1,258 @@
-class-based
-narration
-arcade
-card battler
-multiple endings
-assassin's creed valhalla black friday
-psychedelic
-tabletop
-colorful
-physics
-point & click
-character action game
-action rpg
-early access
-replay value
-massively multiplayer
-illuminati
-modern
-strategy
-turn-based
-cute
-economy
-turn-based combat
-gothic
-rts
-puzzle platformer
-psychological horror
-fantasy
-sports
-4 player local
-classic
-space
-character customization
-fps
-vikings
-pve
-casual
-2d platformer
-blood
-cartoony
-crafting
-emotional
-bullet time
-horror
-immersive sim
-cinematic
-real time tactics
-goty
-spider-man black friday
-pixel graphics
-metroidvania
-city builder
-comedy
-medieval
-spectacle fighter
-team-based
-post-apocalyptic
-relaxing
-sandbox
-wargame
-horses
-dungeon crawler
-great soundtrack
-co-op campaign
-underground
-retro
-story rich
-card game
-nostalgia
-dwarf
-assassin
-building
-football (soccer)
-utilities
-competitive
-steampunk
-party-based rpg
-roguelike
-gta v black friday
-experimental
-agriculture
-sims 4 black friday
-automation
-interactive fiction
-esports
-noir
-automobile sim
-hand-drawn
-multiplayer
-3d fighter
-farming sim
-perma death
-base building
-3d
-surreal
-combat
-forza horizon black friday
-deckbuilding
-open world
-extraction shooter
-robots
-moddable
-4x
-simulation
-quick-time events
-action
-underwater
-mystery
-stealth
-lore-rich
-magic
-3d platformer
-visual novel
-survival horror
-games workshop
-crime
-third-person shooter
-creature collector
-software
-comic book
-co-op
-sci-fi
-sexual content
-fast-paced
-cold war
-top-down shooter
-resource management
-western
-cartoon
-martial arts
-cities skylines 2 black friday
-narrative
-choose your own adventure
-swordplay
-gore
-violent
-historical
-roguevania
-2d fighter
-turn-based strategy
-2d
-motorbike
-red dead redemption black friday
-space sim
-tower defense
-from software
-archery
-fighting
-vehicular combat
-cyberpunk
-parkour
-roguelike deckbuilder
-hack and slash
-investigation
-action-adventure
-resident evil black friday
-funny
-dating sim
-sims 4 dlc
-supernatural
-beautiful
-first-person
-call of duty black friday
-military
-resident evil 4 black friday
-looter shooter
-online co-op
-battlefield black friday
-free to play
-soundtrack
-star wars jedi: survivor black friday
-crpg
-2.5d
-procedural generation
-hunting
-choices matter
-grand strategy
-strategy rpg
-boomer shooter
-vr
-atmospheric
-walking simulator
-isometric
-rpg
-management
-racing
-1980s
-exploration
-drama
-souls-like
-1990's
-diplomacy
-faith
-alternate history
-real-time
-thriller
-dark humor
-platformer
-loot
-cats
-voxel
+female protagonist 
+zombie 
+card battler 
+puzzle 
+america 
+experimental 
+farming sim 
+resident evil black friday 
+hunt 
+classic 
+diplomacy 
+resident evil 4 black friday 
+magic 
+fish 
+point click 
+open world 
+demon 
+thriller 
+cute 
+race 
+violent 
+massively multiplayer 
+strategy rpg 
+rts 
+spectacle fighter 
+isometric 
+visual novel 
+spider man black friday 
+mature 
+transportation 
+battlefield black friday 
+1990 
+fps 
+hand draw 
+automobile sim 
+political 
+old school 
+turn base combat 
+hero shooter 
+sim 4 black friday 
+battle royale 
+card game 
+viking 
+stealth 
+comedy 
+extraction shooter 
+stylized 
+choose adventure 
+gun customization 
+combat 
+horror 
+party base rpg 
+fight 
+bullet time 
+procedural generation 
+controller 
+team base 
+assassin creed valhalla black friday 
+realistic 
+city builder 
+co op campaign 
+esport 
+tower defense 
+roguelike 
+drive 
+early access 
+destruction 
+military 
+pvp 
+board game 
+supernatural 
+psychological horror 
+atmospheric 
+space 
 dystopian 
-political
-hero shooter
-elden ring black friday
-local multiplayer
-superhero
-mythology
-difficult
-survival
-tactical
-roguelite
-music
-fifa 24 black friday
-female protagonist
-third person
-demons
-futuristic
-controller
-war
-jrpg
-mature
-nonlinear
-family friendly
-stylized
-adventure
-local co-op
-hacking
-trading card game
-hogwarts legacy black friday
-hex grid
-puzzle
-board game
-dynamic narration
-psychological
-open world survival craft
-singleplayer
-america
-nature
-battle royale
-anime
-nudity
-transportation
-shooter
-realistic
-dark fantasy
-remake
-pvp
-dark
-tactical rpg
-fishing
-gun customization
-tom clancy's games
-colony sim
-detective
-action roguelike
-zombies
-driving
-shoot 'em up
-indie
-old school
-destruction
-assassin's creed mirage black friday
+automation 
+grand strategy 
+walk simulator 
+hack slash 
+metroidvania 
+fantasy 
+adventure 
+western 
+horse 
+shooter 
+colorful 
+superhero 
+red dead redemption black friday 
+crpg 
+action 
+sport 
+survival 
+action adventure 
+agriculture 
+singleplayer 
+anime 
+fighter 
+narration 
+alternate history 
+dark humor 
+archery 
+sim 4 dlc 
+action roguelike 
+post apocalyptic 
+modern 
+underwater 
+nonlinear 
+faith 
+assassin creed mirage black friday 
+duty black friday 
+cinematic 
+soul like 
+platformer 
+star war jedi survivor black friday 
+local co op 
+open world survival craft 
+person shooter 
+detective 
+great soundtrack 
+economy 
+character action game 
+wargame 
+parkour 
+mystery 
+crime 
+local multiplayer 
+turn base strategy 
+gore 
+real time 
+replay value 
+loot 
+illuminati 
+tactical rpg 
+hex grid 
+base building 
+blood 
+pixel graphic 
+rpg 
+arcade 
+utility 
+cold war 
+goty 
+indie 
+colony sim 
+fifa 24 black friday 
+football soccer 
+dungeon crawler 
+psychedelic 
+person 
+war 
+interactive fiction 
+survival horror 
+boomer shooter 
+management 
+beautiful 
+roguelike deckbuilder 
+historical 
+multiple ending 
+creature collector 
+tom clancy 
+resource management 
+assassin 
+underground 
+mythology 
+action rpg 
+hack 
+investigation 
+immersive sim 
+music 
+robot 
+jrpg 
+turn base 
+roguevania 
+platformer 
+family friendly 
+strategy 
+soundtrack 
+cat 
+deckbuilde 
+simulation 
+craft 
+noir 
+sandbox 
+perma death 
+space sim 
+hogwarts legacy black friday 
+relax 
+fighter 
+swordplay 
+drama 
+platformer 
+gothic 
+dating sim 
+voxel 
+nudity 
+roguelite 
+retro 
+tabletop 
+choice matter 
+remake 
+games workshop 
+trade card game 
+martial arts 
+cyberpunk 
+physics 
+shooter 
+real time tactic 
+narrative 
+funny 
+exploration 
+character customization 
+software 
+free play 
+motorbike 
+person 
+city skyline 2 black friday 
+lore rich 
+online co op 
+story rich 
+difficult 
+tactical 
+medieval 
+emotional 
+looter shooter 
+shoot em 
+dynamic narration 
+cartoon 
+elden ring black friday 
+class base 
+cartoony 
+moddable 
+forza horizon black friday 
+vehicular combat 
+dark fantasy 
+comic book 
+casual 
+dark 
+dwarf 
+futuristic 
+sexual content 
+sci fi 
+4 player local 
+fast pace 
+steampunk 
+co op 
+build 
+nature 
+quick time event 
+software 
+psychological 
+surreal 
+nostalgia 
+vr 
+pve 
+gta v black friday 
+competitive 
+puzzle platformer 
+multiplayer 

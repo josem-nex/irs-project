@@ -17,9 +17,12 @@ class RecSystem:
     def __init__(self, is_from_file: bool = False):
         self.game_storage: GameStorage = GameStorage()
         self.games_data: List[GameData] = []
-        self.dictionary: corpora.Dictionary = None 
+        self.dictionary: corpora.Dictionary = None
         
         self.load(is_from_file=is_from_file)
+        
+        self.tags = get_tags(self.games_data, from_file=is_from_file)
+        self.genres = get_genres(self.games_data, from_file=is_from_file) 
         
     
     def load(self, is_from_file: bool = False):
@@ -64,9 +67,21 @@ class RecSystem:
         List[GameOut]
             A list of GameOut objects.
         """
-        tokenized_query = tokenize([query])
+        tokenized_query = tokenize(
+            text=[query], 
+            genres=self.genres, 
+            tags=self.tags,
+            is_query=True)
         
-        _, vectorized_query = vectorize(tokenized_query, True, dictionary=self.dictionary)
+        # for token in tokenized_query[0]:
+        #     if token._.is_genre:
+        #         print("Is Genre: " + token.lemma_)
+        #     if token._.is_tag: 
+        #         print("Is tag: " + token.lemma_)
+        
+        query_lemmas = [[token.lemma_ for token in tokenized_query[0]]]
+        
+        _, vectorized_query = vectorize(query_lemmas, True, dictionary=self.dictionary)
         
         matrix = similarities.MatrixSimilarity( 
             [game.Vector for game in self.games_data]
