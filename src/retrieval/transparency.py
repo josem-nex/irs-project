@@ -25,6 +25,12 @@ class TransparentLayer:
         """
         return 0
     
+    def name(self):
+        """
+            Returns the layer name for uses it the user interface.
+        """
+        return ""
+    
 class TagTransparentLayer(TransparentLayer):
     def __init__(self, tags):
         self.tags = tags
@@ -35,6 +41,20 @@ class TagTransparentLayer(TransparentLayer):
     def description(self):
         return f"We used game tags extracted from the query \
             to process the results. The tags used were {self.params}"
+    
+    def get_cost(self, item):
+        if len(self.params()) == 0:
+            return 0
+        matched = []
+        
+        for x in item.tags:
+            if x.name.lower() in self.params():
+                matched.append(x)
+
+        return len(matched)/len(self.params())
+    
+    def name(self):
+        return "Tags Ranking"
     
 class GenreTransparentLayer(TransparentLayer):
     def __init__(self, genres):
@@ -47,3 +67,16 @@ class GenreTransparentLayer(TransparentLayer):
         return f"We used genre keywords extracted from the query \
             to process the results. The genres used were {self.params}"
     
+    def get_cost(self, item):
+        if len(self.params()) == 0:
+            return 0
+        matched = []
+
+        for x in item.genres:
+            if x.name.lower() in self.params():
+                matched.append(x)
+
+        return len(matched)/len(self.params())
+    
+    def name(self):
+        return "Genre Ranking"

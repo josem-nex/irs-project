@@ -1,12 +1,10 @@
-from spacy import load
 import sympy
-nlp = load("en_core_web_sm")
+from .vectorizer import Vectorizer
+
 class DataDoc:
     def __init__(self, id, content):
-        doc = nlp(content)
-
         self._id = id
-        self._tokens = [token.text for token in doc]
+        self._tokens = content
 
     @property
     def tokens(self):
@@ -20,19 +18,30 @@ class Indexer:
     def __init__(self, data: list[DataDoc]):
         self.corpus = set(data)
         self.invind = InvertedIndex()
+        self.dictionary, self.vectorized_corpus = Vectorizer.vectorize(
+            [x.tokens for x in self.corpus]
+        )
 
         for doc in data:
             # print(doc.tokens)
             self.invind.add(doc)
 
     def add(self, elements: list[DataDoc]):
-        self.corpus = self.corpus.union(set(elements))
+        self.corpus = self.corpus.union(set(elements)) 
+
+        self.dictionary, self.vectorized_corpus = Vectorizer.vectorize(
+            [x.tokens for x in self.corpus]
+        )
 
         for doc in elements:
             self.invind.add(doc)
 
     def remove(self, elements: list[DataDoc]):
         self.corpus.difference_update(set(elements))
+
+        self.dictionary, self.vectorized_corpus = Vectorizer.vectorize(
+            [x.tokens for x in self.corpus]
+        )
 
         for doc in elements:
             self.invind.remove(doc)
@@ -77,6 +86,7 @@ class InvertedIndex:
                 self.tokens[token].add(new.id)
             else:
                 self.tokens[token] = set([new.id])
+
     def matching_docs(self, query_dnf):
         """Finds the documents that match the query in disjunctive normal form.
     

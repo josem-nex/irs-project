@@ -1,5 +1,6 @@
 import spacy
 from spacy.tokens import Token
+from spacy.matcher import Matcher
 from .utils import Utils
 
 
@@ -33,12 +34,40 @@ class Query:
     def __repr__(self):
         return f"Query({self.text})"
         
-    def tokenize(self, text):
-        doc = self.nlp(text)
-        return [token.text for token in doc]
+    # def tokenize(self, text):
+       
+    #     return [token.text for token in doc]
     
     def tokenize_with_pos(self, text):
+        matcher = Matcher(self.nlp.vocab)
+
+        # Define a pattern to match a negation token followed by a substantive (noun)
+        pattern0 = [
+            {"LOWER": {"IN": ["no", "not", "never", "none", "n't"]}},  # Negation tokens
+            {"POS": "NOUN"}  # Substantive (noun)
+        ]
+        pattern1 = [
+            {"POS": "NOUN"}
+        ]
+        pattern2 = [
+            {"POS": "NOUN"},
+            {"LOWER": {"IN": ["and"]}},
+            {"POS": "NOUN"}
+        ]
+        pattern3 = [
+            {"POS": "NOUN"},
+            {"LOWER": {"IN": ["or"]}},
+            {"POS": "NOUN"}
+        ]
+
+        # Add the pattern to the matcher
+        matcher.add("NEGATION_NOUN", [pattern0, pattern1, pattern2, pattern3])
         doc = self.nlp(text)
+        matches = matcher(doc)
+        for a, b, c in matches:
+            span = doc[b:c]
+            print(f"matches: {span.text}")
+
         tokens = []
         for token in doc:
             if token.text in self.tags:

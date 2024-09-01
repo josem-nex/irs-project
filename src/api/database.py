@@ -8,6 +8,8 @@ from sqlalchemy.orm import sessionmaker, relationship, Session
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 
+POPULATE = not os.path.exists("./sql_app.db")
+
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
 )
@@ -30,6 +32,7 @@ class Game(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, index=True)
     description = Column(String)
+    image = Column(String)
     genres = relationship("Genre", secondary="game_genres", back_populates="games")
     tags = relationship("Tag", secondary="game_tags", back_populates="games")
 
@@ -48,22 +51,41 @@ class Tag(Base):
 Base.metadata.create_all(engine)
 
 def populate_database(session: Session, data: list[dict]):
-    input_data = [
-        Game(title=x.get('title', ''), description=x.get('description', '')) for x in data
-    ]
-    print([x.title for x in input_data])
-    session.add_all(input_data)
-    session.commit()
+    for x in data:
+        input_data = []
+        game = Game(
+            title=x.get('title', ''), 
+            description=x.get('description', ''),
+            image=x.get('image')
+        )
+        for genre in x.get('genres', []):
+            try:
+                db_genre = session.query(Genre).filter(Genre.name == genre).one()
+            except:
+                db_genre = Genre(name=genre)
+                input_data.append(db_genre)
+            finally:
+                game.genres.append(db_genre)
+        for tag in x.get('tags', []):
+            try:
+                db_tag = session.query(Tag).filter(Tag.name == tag).one()
+            except:
+                db_tag = Tag(name=tag)
+                input_data.append(db_tag)
+            finally:
+                game.tags.append(db_tag)
+        input_data.append(game)
+        session.add_all(input_data)
+        session.commit()
 
 # TODO: improve this as a task probably using a POST endpoint instead of directly populate it
-POPULATE = False
 
 if POPULATE:
     with open('scraper-result.json', 'r') as result_json:
-        content = ''
-        for line in result_json:
-            content += line
-        data = json.loads(content)
         with Session(bind=engine) as session:
+            # content = ''
+            # for line in result_json:
+            #     content += line
+            data = json.load(result_json)
             populate_database(session, data)
     POPULATE = False
