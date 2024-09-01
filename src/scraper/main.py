@@ -28,6 +28,9 @@ class GgDealsSpider(scrapy.Spider):
         description_selector = response.css("div.game-description.description-text")
         description = description_selector.xpath(".//p//text()")
 
+        image_selector = response.css("div.game-info-image-wrapper")
+        image = image_selector.xpath(".//div//img//@src")
+
         if len(description) == 0:
             description = description_selector.xpath(".//text()")
 
@@ -35,7 +38,8 @@ class GgDealsSpider(scrapy.Spider):
                 "Title": title.get(),
                 "Genres": genres.getall(),
                 "Tags": tags.getall(),
-                "Description": " ".join(description.getall()).replace("\n", "")
+                "Description": " ".join(description.getall()).replace("\n", ""),
+                "Image": image.get()
             }
     
     def parse_games_page(self, response):
