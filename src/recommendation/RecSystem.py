@@ -1,13 +1,13 @@
 from typing import List
 from gensim import corpora, similarities
 
-from recommendation.GameStorage import GameStorage
-from models.Game import Game
-from models.GameData import GameData
-from models.GameOut import GameOut
-from recommendation.Tokenizer import tokenize
-from recommendation.Vectorizer import vectorize
-from recommendation.Serializer import load_games_data, save_json
+from .GameStorage import GameStorage
+from ..models.Game import Game
+from ..models.GameData import GameData
+from ..models.GameOut import GameOut
+from .Tokenizer import tokenize
+from .Vectorizer import vectorize
+from .Serializer import load_games_data, save_json
 
 
 class RecSystem:
