@@ -27,14 +27,14 @@ def home(request: Request):
             db_genres = session.query(Genre).all()
             db_tags = session.query(Tag).all()
 
-        games = [GameSchema.model_validate(x) for x in db_games]
-        genres = [GenreSchema.model_validate(x).name.lower() for x in db_genres]
-        tags = [TagSchema.model_validate(x).name.lower() for x in db_tags]
-        rec.load([], genres, tags)
+            games = [GameSchema.model_validate(x) for x in db_games]
+            genres = [GenreSchema.model_validate(x).name.lower() for x in db_genres]
+            tags = [TagSchema.model_validate(x).name.lower() for x in db_tags]
+            rec.load([], genres, tags)
 
-        chunk_size = 200
-        for i in range(int(len(games)/chunk_size)):
-            rec.add(games[i*chunk_size:(i+1)*chunk_size])
+            chunk_size = 200
+            for i in range(int(len(games)/chunk_size)):
+                rec.add(games[i*chunk_size:(i+1)*chunk_size])
     
     return templates.TemplateResponse(
         request=request, name="index.html"
